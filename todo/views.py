@@ -40,7 +40,7 @@ def update(request, task_id):
     except Task.DoesNotExist:
         raise Http404("Task does not exist")
     if request.method == 'POST':
-        task.title = reqeust.POST['title']
+        task.title = request.POST['title']
         task.due_at = make_aware(parse_fatetime(request.POST['due_at']))
         task.save()
         return redirect(detail, task_id)
